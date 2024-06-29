@@ -1,3 +1,4 @@
+
 FROM node:18
 
 # 設定工作目錄
@@ -7,13 +8,10 @@ WORKDIR /app
 COPY package*.json ./
 
 # 安裝專案依賴
-RUN npm install
+RUN npm install --only=prod
 
 # 複製所有專案文件到工作目錄
 COPY . .
 
-# 編譯 TypeScript 程式碼
-RUN npm run start:build
-
 # 預設指令：啟動應用程式
-CMD ["npm", "run", "start:run"]
+CMD ["npm", "run", "start"]
